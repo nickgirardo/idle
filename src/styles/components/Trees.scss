@@ -1,0 +1,5 @@
+.trees {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $tree-width);
+  grid-gap: 1em;
+}

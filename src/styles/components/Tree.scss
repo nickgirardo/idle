@@ -1,0 +1,56 @@
+.tree {
+  width: $tree-width;
+  height: $tree-height;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 1em;
+  border-radius: 1em;
+
+  background-color: #555;
+  &.active {
+    background-color: #222;
+  }
+
+  .name {
+    color: white;
+    // TODO proper typography?
+    font-size: 18px;
+  }
+  .img {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-color: green;
+  }
+  .progress {
+    position: relative;
+    width: 80%;
+    height: 18px;
+
+    background-color: gray;
+
+    .part-complete {
+      @include full-size-abs;
+      background-color: green;
+      transform-origin: left;
+
+      // Empty by default
+      transform: scaleX(0);
+
+      &.active {
+        animation: prog-bar linear infinite;
+        animation-duration: 5s;
+      }
+    }
+  }
+}
+
+
+@keyframes prog-bar {
+  from { transform: scaleX(0) }
+  to { transform: scaleX(1) }
+}
