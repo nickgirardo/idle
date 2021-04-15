@@ -2,7 +2,7 @@
   "name": "idle",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index",
   "scripts": {
     "start:dev": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -39,8 +39,12 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.1",
+    "@types/react-redux": "^7.1.16",
     "classnames": "^2.3.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.3",
+    "redux-thunk": "^2.3.0"
   }
 }
