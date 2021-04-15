@@ -10,16 +10,26 @@ import { Inventory, Experience } from '../@types/redux/store';
 
 import { Item } from '../data/Items';
 
-const initialState: Experience = {
-    [Skill.CHOPPING]: 0,
-    [Skill.BURNING]: 0,
+// Read in past state from localStorage if possible
+const getInitialState = (): Experience => {
+    const baseInitialState = {
+        [Skill.CHOPPING]: 0,
+        [Skill.BURNING]: 0,
+    };
+    const experience = localStorage.getItem('experience');
+
+    if (!experience)
+        return baseInitialState;
+
+    return JSON.parse(experience);
 };
+
 
 type ExperiencePayload = ExperienceDrop[];
 
 export const slice = createSlice({
     name: 'activity',
-    initialState,
+    initialState: getInitialState(),
     reducers: {
         getExperience: (state: Experience, { payload }: PayloadAction<ExperiencePayload>) => {
             payload.forEach(exp => {

@@ -9,6 +9,7 @@ import { getExperience } from '../redux/experience';
 // TODO this should be renamed and have all action info, not just trees
 import { TreeClasses } from '../data/Trees';
 
+import { serializeState } from './storage';
 
 export const execActivity = (dispatch: AppDispatch, activity: ActivityOption) => {
     const currentTree = TreeClasses.find(t => t.activity === activity);
