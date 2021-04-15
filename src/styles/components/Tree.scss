@@ -43,7 +43,9 @@
 
       &.active {
         animation: prog-bar linear infinite;
+        // TODO set these on element dynamically
         animation-duration: 5s;
+        animation-delay: 0;
       }
     }
   }

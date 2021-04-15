@@ -16,7 +16,10 @@ const Tree = (props: TreeProps): ReactElement =>
         <div className='name'> { props.name } </div>
         <div className='img'> { /* TODO img here */ } </div>
         <div className='progress'>
-            <div className={ cx('part-complete', props.active && 'active') } />
+            <div
+                style={{ 'animationDuration': `${props.hardiness}ms` }}
+                className={ cx('part-complete', props.active && 'active') }
+            />
         </div>
     </div>;
 
