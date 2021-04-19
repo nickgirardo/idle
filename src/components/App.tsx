@@ -6,8 +6,9 @@ import { Returning } from './Returning';
 
 export default () => <>
     <Clock />
-    <Trees />
-    <Levels />
-    <Inventory />
-    <Returning />
+    <Returning>
+        <Trees />
+        <Levels />
+        <Inventory />
+    </Returning>
 </>;

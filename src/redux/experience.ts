@@ -8,8 +8,6 @@ import {
 
 import { Inventory, Experience } from '../@types/redux/store';
 
-import { calcReturningExp } from '../utils/returning';
-
 import { Item } from '../data/Items';
 
 // Read in past state from localStorage if possible

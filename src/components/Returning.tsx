@@ -14,7 +14,10 @@ import { mergeExperience } from '../redux/experience';
 import { LevelEntry } from './Levels';
 import { InventoryEntry } from './Inventory';
 
-export const Returning = (): ReactElement => {
+type Props = {
+    children: ReactElement[];
+}
+export const Returning = (props: Props): ReactElement => {
     const returning = useSelector((state: Store) => state.returning);
     const dispatch = useAppDispatch();
 
@@ -25,7 +28,7 @@ export const Returning = (): ReactElement => {
     };
 
     if (returning.claimed)
-        return <></>;
+        return <>{ props.children } </>;
 
     return <div className='returning'> 
         Since you&apos;ve been gone, you&apos;ve done this:
@@ -41,7 +44,7 @@ export const Returning = (): ReactElement => {
                     <InventoryEntry key={ item } item={ item as Item } quantity={ quantity || 0 } />
                 )
         } </div>
-        <button onClick={ claim }> Claim </button>
+        <button onClick={ claim }> Ok </button>
     </div>;
 };
 

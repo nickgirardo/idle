@@ -2,8 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ActivityOption, ItemQuantity } from '../@types/Idle';
 import { Inventory } from '../@types/redux/store';
 
-import { calcReturningInv } from '../utils/returning';
-
 import { Item } from '../data/Items';
 
 // Read in past state from localStorage if possible
