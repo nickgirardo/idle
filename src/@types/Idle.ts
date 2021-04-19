@@ -1,4 +1,5 @@
 import { Item } from '../data/Items';
+import { Experience } from './redux/store';
 
 // Tuple of item id and quantity
 export type ItemQuantity = [Item, number];
@@ -19,7 +20,7 @@ export type ActivityResult = {
 export type TreeStats = {
     name: string,
     hardiness: number,
-    levelReq: number,
+    available: (arg0: Experience) => boolean,
     activity: ActivityOption,
     onComplete: () => ActivityResult,
 }

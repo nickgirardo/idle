@@ -13,6 +13,7 @@ import Tree from './Tree';
 export default (): ReactElement => {
     const dispatch = useAppDispatch();
     const currentActivity = useSelector((store: Store) => store.activity.id);
+    const experience = useSelector((store: Store) => store.experience);
 
     const toggleActivity = (tree: TreeStats) => {
         if (tree.activity === currentActivity) {
@@ -25,7 +26,7 @@ export default (): ReactElement => {
     return (
         <div className='trees'>
             {
-                TreeClasses.map(t =>
+                TreeClasses.filter(t => t.available(experience)).map(t =>
                     <Tree
                         key={ t.name }
                         onClick={ () => toggleActivity(t) }

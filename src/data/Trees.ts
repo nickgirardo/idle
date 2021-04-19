@@ -3,6 +3,8 @@ import { TreeStats, ActivityOption, Skill } from '../@types/Idle';
 import { ItemQuantity } from '../@types/Idle';
 import { Item } from './Items';
 
+import { hasLevel } from '../utils/level';
+
 const isLoot = (loot: ItemQuantity | undefined): loot is ItemQuantity =>
     Boolean(loot);
 
@@ -13,8 +15,8 @@ export const TreeClasses: TreeStats[] = [
     {
         name: 'Oak',
         hardiness: 3000,
-        levelReq: 15,
         activity: ActivityOption.CHOP_OAK,
+        available: () => true,
         onComplete: () => ({
             experience: [[Skill.CHOPPING, 8]],
             loot: [
@@ -26,8 +28,8 @@ export const TreeClasses: TreeStats[] = [
     {
         name: 'Willow',
         hardiness: 4000,
-        levelReq: 30,
         activity: ActivityOption.CHOP_WILLOW,
+        available: e => hasLevel(e, Skill.CHOPPING, 5),
         onComplete: () => ({
             experience: [[Skill.CHOPPING, 12]],
             loot: [
@@ -39,10 +41,10 @@ export const TreeClasses: TreeStats[] = [
     {
         name: 'Yew',
         hardiness: 8000,
-        levelReq: 60,
         activity: ActivityOption.CHOP_YEW,
+        available: e => hasLevel(e, Skill.CHOPPING, 10),
         onComplete: () => ({
-            experience: [[Skill.CHOPPING, 20]],
+            experience: [[Skill.CHOPPING, 26]],
             loot: [
                 loot(Item.YEW_LOG, 1),
                 Math.random() < 0.02 ? loot(Item.BIRDS_NEST, 1) : undefined,
