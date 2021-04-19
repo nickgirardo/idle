@@ -9,17 +9,22 @@ type EntryProps = {
     quantity: number,
 };
 
-const itemToName = (item: Item): string => {
+const itemToName = (item: Item, quantity: number): string => {
     const matchingItem = ItemData.find(i => i.item === item);
-    return matchingItem ? matchingItem.name : '';
+    if (!matchingItem)
+        return '';
+    if (quantity === 1)
+        return matchingItem.name;
+    return matchingItem.plural;
 };
 
-const InventoryEntry = (props: EntryProps): ReactElement => <div className='entry'>
-    { itemToName(props.item) }: { props.quantity }
+export const InventoryEntry = (props: EntryProps): ReactElement => <div className='entry'>
+    { itemToName(props.item, props.quantity) }: { props.quantity }
 </div>;
 
-export default (): ReactElement => {
+export const Inventory = (): ReactElement => {
     const inventory = useSelector((state: Store) => state.inventory);
+
     return <div className='inventory'> {
         Object.entries(inventory)
             .filter(([item, quantity]) => quantity)
